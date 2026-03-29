@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <h1 class="text-center my-4">Listado de Dueños</h1>
+</div>
+
+<div class="container mt-4">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="text-center">Nombre</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Telefono</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Mascotas</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Accion</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dueno in duenos %}
+      <tr>
+        <td>{{ dueno.nombre }}</td>
+        <td>{{ dueno.telefono }}</td>
+        <td class="text-center">{{ dueno.mascotas.all|length }}</td>
+        <td class="text-center">
+          <a href="{% url 'detalle_dueno' dueno.id %}" class="btn btn-info">Ver detalle</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-center">Sin dueños registrados</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

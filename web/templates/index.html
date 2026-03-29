@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <h1 class="text-center my-4"> Bienvenido al Proyecto Refugio "Patitas Felices"</h1>
+  <h2 class="text-center my-4"> Reporte general de Mascotas</h2>
+</div>
+
+<div class="container mt-4">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="text-center">Nombre</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Dueño</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Diagnóstico</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Vacunas</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mascota in mascotas %}
+      <tr>
+        <td>{{ mascota.nombre }}</td>
+        <td>{{ mascota.dueno.nombre | default:"Sin dueño" }}</td>
+        <td>{{ mascota.expediente.diagnostico }}</td>
+        <td>{% for vacuna in mascota.vacunas.all %}{{ vacuna.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="container mt-5">
+  <form method="GET" class="mb-4">
+    {{ form }}
+  </form>
+
+  <table class="table table-bordered table-striped table-success">
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="text-center">Columna 1</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Columna 2</div>
+        </th>
+        <th scope="col">
+          <div class="text-center">Acciones</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for equipo in equipos %}
+      <tr>
+        <td>{{ equipo.nombre }}</td>
+        <td>${{ equipo.precio }}</td>
+        <td>
+          <a href="" class="btn btn-info">Acción particular</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-# Refugio "Patitas Felices"
+# Refugio "Patitas Felices" - Gestión y reporte
 
 Aplicación web desarrollada en **Django** para administrar información de un refugio: **mascotas**, **dueños**, **vacunas** y **expediente médico**, con **registro/inicio/cierre de sesión**.
 
